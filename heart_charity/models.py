@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 class Volunteer(models.Model):
     name=models.CharField(max_length=30)
-    email=models.CharField(max_length=50)
-    phone=models.CharField(max_length=12)
-    gender=models.CharField(max_length=6)
+    email=models.CharField(max_length=50, null=True, blank=True)
+    phone=models.CharField(max_length=12, null=True, blank=True)
+    gender=models.CharField(max_length=6,null=True, blank=True)
     dob=models.DateField( null=True, blank=True)
     subject=models.CharField(max_length=30)
     message=models.TextField()
@@ -60,6 +60,21 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def mask_phone(self):
+        if self.phone and len(self.phone) >= 4:
+            return f"xxxxxx{self.phone[-4:]}"
+        return "Null"  # Default masking if the phone number is missing or too short
+
+    def mask_udid(self):
+        if self.udid_no and len(self.udid_no) >= 4:
+            return f"xxxx-xxxx-xx-{self.udid_no[-4:]}"
+        return "Null"  # Default masking if UDID is missing or too short
+
+    def mask_aadhaar(self):
+        if self.aadhaar_no and len(self.aadhaar_no) >= 4:
+            return f"xxxx-xxxx-{self.aadhaar_no[-4:]}"
+        return "Null"  # Default masking if Aadhaar is missing or too short
     
 
 class work(models.Model):

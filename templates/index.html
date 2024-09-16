@@ -28,6 +28,48 @@ https://templatemo.com/tm-581-kind-heart-charity
 
 -->
 
+<style>
+    /* Fixed height and width for the image */
+.fixed-image {
+    height: 250px;  /* Set a fixed height for the image */
+    width: 100%;    /* Ensures it fills the card width */
+    object-fit: contain; /* Ensures the image maintains aspect ratio without distortion */
+}
+
+/* Fixed size for the card */
+.fixed-card {
+    height: 300px;  /* Fixed card height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Only the cause detail is scrollable */
+.scrollable {
+    max-height: 100px;  /* Set a max-height for the scrollable content */
+    overflow-y: auto;  /* Enable scrolling if content exceeds */
+    padding-right: 10px;
+}
+
+/* Optional: Customize scroll bar for a cleaner look */
+.scrollable::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+</style>
+
     </head>
     
     <body id="section_1">
@@ -194,7 +236,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                             <h2 class="mb-5">Welcome to Pragati Foundation</h2>
                         </div>
 
-                        <div class="col-lg-6 " style="height: 610px;">
+                        <div class="col-lg-6 " style="height: 700px;">
                             <img src="{% static 'images/who.png'%}" class="custom-text-box-image img-fluid" alt="">
                         </div>
 
@@ -204,7 +246,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                                 
 
-                                <p class="mb-0">The Pragati Foundation is committed to transforming the lives of children and individuals with disabilities through dedicated and innovative programs.</p>
+                                <p class="mb-0">The Pragati Foundation is dedicated to improving the lives of disabled individuals by providing essential mobility aids like prosthetic legs, walking sticks, and wheelchairs. In partnership with the government, the foundation also helps organize small stalls where disabled individuals can sell goods and earn a livelihood. Through these efforts, Pragati empowers people with disabilities to lead independent, dignified lives.</p>
                             </div>
                             
                             <div class="row">
@@ -389,46 +431,48 @@ https://templatemo.com/tm-581-kind-heart-charity
             <section class="section-padding" id="">
                 <div class="container">
                     <div class="row">
-
+            
                         <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Our Causes</h2>
+                            <h2>Be a Part of Someone's live</h2>
                         </div>
-
+            
                         {% for cause in causes %}
                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="custom-block-wrap">
-                                <img src="{{cause.img.url}}" class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block">
+                                <img src="{{cause.img.url}}" class="custom-block-image img-fluid fixed-image" alt="">
+            
+                                <div class="custom-block fixed-card">
                                     <div class="custom-block-body">
                                         <h5 class="mb-3">{{cause.name}}</h5>
-
-                                        <p>{{cause.detail}}</p>
-
-                                        <div class="d-flex align-items-center my-2">
+            
+                                        <!-- Scrollable content only for the detail -->
+                                        <div class="scrollable">
+                                            <p>{{cause.detail}}</p>
+                                        </div>
+                                        <div class="d-flex custom-block my-2">
                                             <p class="mb-0">
                                                 <strong>Raised:</strong>
                                                 ₹ {{cause.raised}}
                                             </p>
-
+            
                                             <p class="ms-auto mb-0">
                                                 <strong>Goal:</strong>
                                                 ₹ {{cause.goal}}
                                             </p>
                                         </div>
+                                        
                                     </div>
-
+                                    
                                     <a href="/donate/{{cause.id}}" class="custom-btn btn">Donate now</a>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
-
-                        
-
+            
                     </div>
                 </div>
             </section>
+            
 
             <!-- <section class="volunteer-section section-padding" id="">
                 <div class="container">
@@ -552,11 +596,11 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <h2>Get in touch</h2>
 
                                 <div class="contact-image-wrap d-flex flex-wrap">
-                                    <img src="{% static 'images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg'%}" class="img-fluid avatar-image" alt="">
+                                    <img src="{% static 'images/ab.png'%}" class="img-fluid avatar-image" alt="">
 
                                     <div class="d-flex flex-column justify-content-center ms-3">
-                                        <p class="mb-0">Clara Barton</p>
-                                        <p class="mb-0"><strong>HR & Office Manager</strong></p>
+                                        <p class="mb-0">Anand Bankar</p>
+                                        <p class="mb-0"><strong>Founder</strong></p>
                                     </div>
                                 </div>
 
@@ -565,14 +609,14 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                                     <p class="d-flex mb-2">
                                         <i class="bi-geo-alt me-2"></i>
-                                        Akershusstranda 20, 0150 Oslo, Norway
+                                        BJP Karyalay, Vasant Vihar Mhada Office Thane West 400610
                                     </p>
 
                                     <p class="d-flex mb-2">
                                         <i class="bi-telephone me-2"></i>
 
-                                        <a href="tel: 120-240-9600">
-                                            120-240-9600
+                                        <a href="tel: 8433616461">
+                                            8433616461
                                         </a>
                                     </p>
 
@@ -584,7 +628,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         </a>
                                     </p>
 
-                                    <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+                                    <!-- <a href="#" class="custom-btn btn mt-3">Get Direction</a> -->
                                 </div>
                             </div>
                         </div>
@@ -624,7 +668,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-4" style="width: 100px;">
-                        <img src="{% static 'images/logo1.png' %}" class="logo img-fluid" alt="">
+                        <img src="{% static 'images/logo.png' %}" class="logo img-fluid" alt="">
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -649,8 +693,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <p class="text-white d-flex mb-2">
                             <i class="bi-telephone me-2"></i>
 
-                            <a href="tel: 120-240-9600" class="site-footer-link">
-                                120-240-9600
+                            <a href="tel: 8433616461" class="site-footer-link">
+                                8433616461
                             </a>
                         </p>
 
@@ -664,10 +708,10 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                         <p class="text-white d-flex mt-3">
                             <i class="bi-geo-alt me-2"></i>
-                            Akershusstranda 20, 0150 Oslo, Norway
+                            BJP Karyalay, Vasant Vihar Mhada Office Thane West 400610
                         </p>
 
-                        <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+                        <!-- <a href="#" class="custom-btn btn mt-3">Get Direction</a> -->
                     </div>
                 </div>
             </div>

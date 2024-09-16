@@ -10,7 +10,6 @@ urlpatterns = [
         path('submit-valunteer',views.submit_valunteer, name="submit-valunteer" ),
         path('contact',views.contact, name="contact" ),
         path('donate/<int:id>',views.donate, name="donate" ),
-        path('donate/',views.donate, name="donate" ),
         path('contactus',views.contactus, name="contactus" ),
         path('history',views.history, name="history" ),
         path('donates',views.donates, name="donates" ),
