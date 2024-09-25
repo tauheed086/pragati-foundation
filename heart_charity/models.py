@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+
 class Volunteer(models.Model):
     name=models.CharField(max_length=30)
     email=models.CharField(max_length=50, null=True, blank=True)
@@ -21,23 +22,26 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
+
 class Cause(models.Model):
-    name=models.CharField(max_length=30)
-    img=models.ImageField()
-    detail=models.CharField(max_length=500)
-    raised=models.FloatField()
-    goal=models.FloatField()
+    name = models.CharField(max_length=30)
+    img = models.ImageField(upload_to='causes/', null=True, blank=True)  # Store cause images in a separate folder
+    detail = models.CharField(max_length=500)
+    raised = models.FloatField()
+    goal = models.FloatField()
 
     def __str__(self):
         return self.name
 
 class Donate(models.Model):
-    name=models.CharField(max_length=30)
-    email=models.EmailField(max_length=30)
-    amount=models.FloatField()
+    name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=30)
+    amount = models.FloatField()
+    photo = models.ImageField(upload_to='donors/', blank=True, null=True)  # Photo field for donor images
+    cause = models.ForeignKey(Cause, on_delete=models.CASCADE)  # Link donation to a cause
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.cause.name}"
     
 class Person(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)

@@ -12,7 +12,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/apple-touch-icon.png' %}">
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icons/favicon-32x32.png' %}">
         <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/icons/favicon-16x16.png' %}">
-        <link rel="manifest" href="{% static 'images/icons/site.webmanifest ' %}">
+        <link rel="manifest" href="{% static 'images/icons/site.webmanifest' %}">
 
         <!-- CSS FILES -->        
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -74,56 +74,10 @@ https://templatemo.com/tm-581-kind-heart-charity
     
     <body id="section_1">
 
-        <!-- <header class="site-header">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-lg-8 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-geo-alt me-2"></i>
-                            Akershusstranda 20, 0150 Oslo, Norway
-                        </p>
-
-                        <p class="d-flex mb-0">
-                            <i class="bi-envelope me-2"></i>
-
-                            <a href="mailto:info@company.com">
-                                info@company.com
-                            </a>
-                        </p>
-                    </div>
-
-                    <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
-                        <ul class="social-icon">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-twitter"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-facebook"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-instagram"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-youtube"></a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-whatsapp"></a>
-                            </li>
-                        </ul> 
-                    </div> 
-
-                </div> 
-            </div> 
-        </header> -->
-
+        
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{% url 'index' %}">
                     <img src="{% static 'images/logo.png'  %}" class="logo img-fluid" alt="Pragati Foundation">
                     <span>
                         Pragati Foundation
@@ -142,12 +96,14 @@ https://templatemo.com/tm-581-kind-heart-charity
                         </li>
                 
                         <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %} click-scroll" href="{% url 'gallery' %}">Beneficiary</a>
                         </li>
                 
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
-                        </li>
+                        
                 
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'donates' %}active{% endif %} click-scroll" href="{% url 'donates' %}">Donate</a>
@@ -189,7 +145,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         </div>
                                     </div>
 
-                                     <div class="carousel-item">
+                                     <!-- <div class="carousel-item">
                                         <img src="{% static 'images/slide/head2.png '%}" class="carousel-image img-fluid" alt="...">
                                         
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
@@ -197,7 +153,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             
                                             <p>You can support us to grow more</p>
                                         </div>
-                                    </div> 
+                                    </div>  -->
 
                                      <!-- <div class="carousel-item">
                                         <img src="{% static 'images/slide/medium-shot-people-collecting-donations.jpg '%}" class="carousel-image img-fluid" alt="...">
@@ -210,7 +166,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     </div>  -->
                                 </div>
 
-                                 <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
+                                 <!-- <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
@@ -218,7 +174,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
 
@@ -282,7 +238,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <div class="d-flex">
                                                 <span class="counter-number" data-from="1" data-to="1" data-speed="1000"></span>
                                                 <span class="counter-number-text">k</span>
-                                                <span class="counter-number-text">+</span>
+                                                
                                             </div>
 
                                             <span class="counter-text">Disableds and Children</span>
@@ -371,44 +327,6 @@ https://templatemo.com/tm-581-kind-heart-charity
             
 
 
-            <!-- <section class="about-section section-padding">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-5 col-12">
-                            <img src="{%static 'images/portrait-volunteer-who-organized-donations-charity.jpg'  %}" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-5 col-md-7 col-12">
-                            <div class="custom-text-block">
-                                <h2 class="mb-0">Vikram Chavan</h2>
-
-                                <p class="text-muted mb-lg-4 mb-md-4">FounderD</p>
-
-                                <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-
-                                <p>You are not allowed to redistribute this template ZIP file on any other template collection website. Please contact TemplateMo for more information.</p>
-
-                                <ul class="social-icon mt-4">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-twitter"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-facebook"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
             <section class="cta-section section-padding section-bg">
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
@@ -418,9 +336,9 @@ https://templatemo.com/tm-581-kind-heart-charity
                         </div>
 
                         <div class="col-lg-5 col-12">
-                            <a href="#" class="me-4">Make a donation</a>
+                            <a href="{%url 'donates' %}" class="me-4">Make a donation</a>
 
-                            <a href="#section_4" class="custom-btn btn smoothscroll">Become a volunteer</a>
+                            <a href="{% url 'contactus' %}" class="custom-btn btn smoothscroll">Become a volunteer</a>
                         </div>
 
                     </div>
@@ -463,7 +381,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         
                                     </div>
                                     
-                                    <a href="/donate/{{cause.id}}" class="custom-btn btn">Donate now</a>
+                                    <a href="{% url 'donates' %}" class="custom-btn btn">Donate now</a>
                                 </div>
                             </div>
                         </div>
@@ -474,119 +392,6 @@ https://templatemo.com/tm-581-kind-heart-charity
             </section>
             
 
-            <!-- <section class="volunteer-section section-padding" id="">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12">
-                            <h2 class="text-white mb-4">Volunteer</h2>
-
-                            <form class="custom-form volunteer-form mb-5 mb-lg-0" action="/submit-valunteer" method="post">
-                                {% csrf_token %}
-                                <h3 class="mb-4">Become a volunteer today</h3>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <input type="text" name="name" id="volunteer-name" class="form-control" placeholder="Your Name" required>
-                                    </div>
-
-                                    <div class="col-lg-6 col-12">    
-                                        <input type="email" name="email" id="volunteer-email" class="form-control" placeholder="Enter Your Email" required>
-                                    </div>
-                                    
-                                </div>
-                                <input type="text" name="subject" rows="3" id="volunteer-subject" class="form-control" placeholder="Subject" required>
-
-                                <textarea name="message" rows="3" class="form-control" id="volunteer-message" placeholder="Comment (Optional)"></textarea>
-
-                                <input type="submit" class="form-control" value="Submit" style="background: #5a6f80;color: white;">
-                            </form>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <img src="{% static 'images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg'%}" class="volunteer-image img-fluid" alt="">
-
-                            <div class="custom-block-body text-center">
-                                <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
-
-                                <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-
-            <!-- <section class="testimonial-section section-padding section-bg">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <h2 class="mb-lg-3">Happy Customers</h2>
-                            
-                                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
-
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                           <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Maria</span>, Boss</small>
-                                           </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Thomas</span>, Partner</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Jane</span>, Advisor</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Bob</span>, Entreprenuer</small>
-                                           </div>
-                                        </div>
-
-                                          <ol class="carousel-indicators">
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                                    <img src="{% static 'images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                                    <img src="{% static 'images/avatar/portrait-young-redhead-bearded-male.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                                    <img src="{% static 'images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                                    <img src="{% static 'images/avatar/studio-portrait-emotional-happy-funny.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-                                          </ol>
-
-                                 </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-
             <section class="contact-section section-padding" id="">
                 <div class="container">
                     <div class="row">
@@ -596,11 +401,11 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <h2>Get in touch</h2>
 
                                 <div class="contact-image-wrap d-flex flex-wrap">
-                                    <img src="{% static 'images/ab.png'%}" class="img-fluid avatar-image" alt="">
+                                    <img src="{% static 'images/vc.png'%}" class="img-fluid avatar-image" alt="">
 
                                     <div class="d-flex flex-column justify-content-center ms-3">
-                                        <p class="mb-0">Anand Bankar</p>
-                                        <p class="mb-0"><strong>Founder</strong></p>
+                                        <p class="mb-0">Vikram Chavan</p>
+                                        <p class="mb-0"><strong>Founder & President</strong></p>
                                     </div>
                                 </div>
 
@@ -615,8 +420,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     <p class="d-flex mb-2">
                                         <i class="bi-telephone me-2"></i>
 
-                                        <a href="tel: 8433616461">
-                                            8433616461
+                                        <a href="tel: 7519491949">
+                                            7519491949
                                         </a>
                                     </p>
 
@@ -675,15 +480,15 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <h5 class="site-footer-title mb-3">Quick Links</h5>
 
                         <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'index' %}" class="footer-menu-link">Home</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Newsroom</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'gallery' %}" class="footer-menu-link">Beneficiary</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Causes</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'about' %}" class="footer-menu-link">About</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Become a volunteer</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'contactus' %}" class="footer-menu-link">Become a volunteer</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Partner with us</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'donates' %}" class="footer-menu-link">Partner with us</a></li>
                         </ul>
                     </div>
 

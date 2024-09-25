@@ -1,5 +1,9 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Volunteer, Contact, Cause,Donate, Person, work, Donations, Event
+from django.core.paginator import Paginator
+
+
 
 # Create your views here.
 def index(request):
@@ -33,6 +37,8 @@ def submit_valunteer(request):
         return redirect('/')
     else:
         return redirect('/')
+
+
 
 def contact(request):
     if request.method =="POST":
@@ -68,19 +74,43 @@ def contactus(request):
     return render(request, 'contactus.html')
 
 def donates(request):
-    if request.method =="POST":
-        name=request.POST['name']
-        email=request.POST['email']
-        amount=request.POST.get('amount')
-        photo = request.FILES.get('photo') 
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        amount = request.POST.get('amount')
+        photo = request.FILES.get('photo')
+        cause_id = request.POST.get('cause')  # Get selected cause
 
-        Donations.objects.create(name=name, email=email, amount=float(amount), photo=photo)
+        if not cause_id:
+            return HttpResponse("Cause is required.", status=400)
+
+        try:
+            cause = Cause.objects.get(id=cause_id)  # Fetch the selected cause
+        except Cause.DoesNotExist:
+            return HttpResponse("Invalid Cause.", status=404)
+
+        # Update the cause's raised and goal amounts
+        cause.raised += float(amount)
+        cause.goal -= float(amount)
+        cause.save()
+
+        # Create the donation entry
+        Donate.objects.create(name=name, email=email, amount=float(amount), photo=photo, cause=cause)
+
         return redirect('donates')
-    
-    donations = Donations.objects.all().order_by('-id')  # Order by latest first
-    return render(request, 'donates.html', {"donations": donations})
+
+    # Fetch all causes and donations to display
+    causes = Cause.objects.all()
+    donations = Donate.objects.all().order_by('-id')  # Order by latest first
+    return render(request, 'donates.html', {"causes": causes, "donations": donations})
+
 
 def history(request):
-    events = Event.objects.prefetch_related('images').all()
-    return render(request, 'history.html', {'events': events})
+    events = Event.objects.prefetch_related('images').order_by('-date')  # Sort by latest date first
+    paginator = Paginator(events, 4)  # 4 events per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'history.html', {'page_obj': page_obj})
     

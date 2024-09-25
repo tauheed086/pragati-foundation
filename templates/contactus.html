@@ -81,7 +81,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{% url 'index' %}">
                     <img src="{% static 'images/logo.png'  %}" class="logo img-fluid" alt="Kind Heart Charity">
                     <span>
                         Pragati Foundation
@@ -98,14 +98,16 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %} click-scroll" style="color: gray;" href="{% url 'index' %}">Home</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                        </li>
                 
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %} click-scroll" href="{% url 'gallery' %}">Beneficiary</a>
                         </li>
                 
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
-                        </li>
+                        
                 
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'donates' %}active{% endif %} click-scroll" href="{% url 'donates' %}">Donate</a>
@@ -120,7 +122,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         </li>
                 
                         <li class="nav-item ms-3">
-                            <a class="nav-link custom-btn custom-border-btn btn" href="">Volunteer</a>
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'contactus' %}">Volunteer</a>
                         </li>
                     </ul>
                 </div>
@@ -147,36 +149,12 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         </div>
                                     </div>
 
-                                     <div class="carousel-item">
-                                        <img src="{% static 'images/slide/head2.png '%}" class="carousel-image img-fluid" alt="...">
-                                        
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>Non-profit</h1>
-                                            
-                                            <p>You can support us to grow more</p>
-                                        </div>
-                                    </div> 
+                                    
 
-                                     <!-- <div class="carousel-item">
-                                        <img src="{% static 'images/slide/medium-shot-people-collecting-donations.jpg '%}" class="carousel-image img-fluid" alt="...">
-                                        
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>Humanity</h1>
-                                            
-                                            <p>Please tell your friends about our website</p>
-                                        </div>
-                                    </div>  -->
+                                     
                                 </div>
 
-                                 <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-
-                                <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                                
                             </div>
                         </div>
 
@@ -569,11 +547,11 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <h2>Get in touch</h2>
 
                                 <div class="contact-image-wrap d-flex flex-wrap">
-                                    <img src="{% static 'images/ab.png'%}" class="img-fluid avatar-image" alt="">
+                                    <img src="{% static 'images/vc.png'%}" class="img-fluid avatar-image" alt="">
 
                                     <div class="d-flex flex-column justify-content-center ms-3">
-                                        <p class="mb-0">Anand Bankar</p>
-                                        <p class="mb-0"><strong>Founder</strong></p>
+                                        <p class="mb-0">Vikram Chavan</p>
+                                        <p class="mb-0"><strong>Founder & President</strong></p>
                                     </div>
                                 </div>
 
@@ -588,8 +566,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     <p class="d-flex mb-2">
                                         <i class="bi-telephone me-2"></i>
 
-                                        <a href="tel: 8433616461">
-                                            8433616461
+                                        <a href="tel: 7519491949">
+                                            7519491949
                                         </a>
                                     </p>
 
@@ -634,32 +612,23 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                     </div>
 <br><br>
+
                     <div class="row ">
 <center>
-                        <div class="col-lg-10">
-                            <div class="col-lg-10 col-10" id="googleMap" style="height: 400px; border-radius: 15px; overflow: hidden;"></div>
-                            <script>
-                                function myMap() {
-                                  var mapProp = {
-                                    center: new google.maps.LatLng(19.19889074383845, 72.95394457230097), // Your location coordinates
-                                    zoom: 15, // Adjust the zoom level
-                                  };
-                                  var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-                                
-                                  // Add a red marker at your location
-                                  var marker = new google.maps.Marker({
-                                    position: new google.maps.LatLng(19.19889074383845, 72.95394457230097), // Your location coordinates
-                                    map: map,
-                                    title: "Pragati Foundation", // Custom marker title
-                                    icon: {
-                                      url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" // URL to the red marker icon
-                                    }
-                                  });
-                                }
-                                </script>
-                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzz7HQY4zbR7lG6GhT9s6ZNCwV97DfFAg&callback=myMap"></script>
-                           
-                        </div>
+    <div class="col-lg-10">
+        <div class="col-lg-10 col-10" style="height: 400px; border-radius: 15px; overflow: hidden;">
+            <!-- Embedded Google Map -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.310361353113!2d72.96476097498132!3d19.225301082010304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b9daf55f275f%3A0x6843cfefd31cadef!2sVikram%20Chavan%20%7C%20BJP%20Karyalay%20Vasant%20Vihar!5e0!3m2!1sen!2sin!4v1727263212103!5m2!1sen!2sin"                 width="100%"
+                height="400"
+                style="border:0; border-radius: 15px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+    
                     </center>
                     </div>
                 </div>
@@ -671,7 +640,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="text-white mb-4">Volunteer</h2>
+                            <center><h2 class="text-white mb-4">Volunteer</h2></center>
 
                             <form class="custom-form volunteer-form mb-5 mb-lg-0" action="/submit-valunteer" method="post">
                                 {% csrf_token %}
@@ -711,8 +680,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                             </form>
                         </div>
 
-                        <div class="col-lg-6 col-12">
-                            <img src="{% static 'images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg'%}" class="volunteer-image img-fluid" alt="">
+                        <div class="col-lg-6 col-14"><br><br><br><br><br>
+                            <img src="{% static 'images/volunteer.jpg'%}" class="volunteer-image img-fluid" style="height: 400px; width: 400px;" alt="">
 
                             <!-- <div class="custom-block-body text-center">
                                 <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
@@ -740,15 +709,15 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <h5 class="site-footer-title mb-3">Quick Links</h5>
 
                         <ul class="footer-menu">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'index' %}" class="footer-menu-link">Home</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Newsroom</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'gallery' %}" class="footer-menu-link">Beneficiary</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Causes</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'about' %}" class="footer-menu-link">About</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Become a volunteer</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'contactus' %}" class="footer-menu-link">Become a volunteer</a></li>
 
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Partner with us</a></li>
+                            <li class="footer-menu-item"><a href="{% url 'donates' %}" class="footer-menu-link">Partner with us</a></li>
                         </ul>
                     </div>
 
