@@ -20,6 +20,8 @@
         <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
 
         <link href="{% static 'css/templatemo-kind-heart-charity.css' %}" rel="stylesheet">
+
+        
 <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -98,12 +100,10 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
                         </li>
-
+                
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %} click-scroll" href="{% url 'gallery' %}">Beneficiary</a>
                         </li>
-                
-                        
                 
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'donates' %}active{% endif %} click-scroll" href="{% url 'donates' %}">Donate</a>
@@ -120,8 +120,13 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'contactus' %}">Volunteer</a>
                         </li>
+                
+                        <li class="nav-item ms-3 d-none d-lg-block">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">Login</a>
+                        </li>
                     </ul>
                 </div>
+                
                 
             </div>
         </nav>
@@ -346,50 +351,55 @@ https://templatemo.com/tm-581-kind-heart-charity
             </section>
 
 
-            <section class="section-padding" id="">
-                <div class="container">
-                    <div class="row">
-            
-                        <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Be a Part of Someone's live</h2>
-                        </div>
-            
-                        {% for cause in causes %}
-                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block-wrap">
-                                <img src="{{cause.img.url}}" class="custom-block-image img-fluid fixed-image" alt="">
-            
-                                <div class="custom-block fixed-card">
-                                    <div class="custom-block-body">
-                                        <h5 class="mb-3">{{cause.name}}</h5>
-            
-                                        <!-- Scrollable content only for the detail -->
-                                        <div class="scrollable">
-                                            <p>{{cause.detail}}</p>
-                                        </div>
-                                        <div class="d-flex custom-block my-2">
-                                            <p class="mb-0">
-                                                <strong>Raised:</strong>
-                                                ₹ {{cause.raised}}
-                                            </p>
-            
-                                            <p class="ms-auto mb-0">
-                                                <strong>Goal:</strong>
-                                                ₹ {{cause.goal}}
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                    <a href="{% url 'donates' %}" class="custom-btn btn">Donate now</a>
-                                </div>
+            <!-- index.html -->
+<section class="section-padding" id="">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center mb-4">
+                <h2>Be a Part of Someone's Life</h2>
+            </div>
+
+            {% for cause in causes %}
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="custom-block-wrap">
+                    <img src="{{cause.img.url}}" class="custom-block-image img-fluid fixed-image" alt="">
+
+                    <div class="custom-block fixed-card">
+                        <div class="custom-block-body">
+                            <h5 class="mb-3">{{cause.name}}</h5>
+
+                            <div class="scrollable">
+                                <p>{{cause.detail}}</p>
                             </div>
+
+                            <div class="d-flex custom-block my-2">
+                                <p class="mb-0">
+                                    <strong>Raised:</strong> ₹ {{cause.raised}}
+                                </p>
+
+                                <p class="ms-auto mb-0">
+                                    <strong>Goal:</strong> ₹ {{cause.goal}}
+                                </p>
+                            </div>
+
                         </div>
-                        {% endfor %}
-            
+
+                        <a href="{% url 'donates' %}" class="custom-btn btn">Donate now</a>
                     </div>
                 </div>
-            </section>
+            </div>
+            {% endfor %}
+
+            <!-- View More Button -->
+            <div class="col-lg-12 col-12 text-center mt-4">
+                <a href="{% url 'donates' %}" class="custom-btn btn btn-primary">View More</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
             
 
             <section class="contact-section section-padding" id="">
@@ -439,30 +449,53 @@ https://templatemo.com/tm-581-kind-heart-charity
                         </div>
 
                         <div class="col-lg-5 col-12 mx-auto">
+                            <!-- Use Django messages -->
+                            {% if messages %}
+                                <div class="message-success" style="display:none;">
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
                             <form class="custom-form contact-form" action="/contact" method="post" role="form">
                                 {% csrf_token %}
                                 <h2>Contact form</h2>
-
+                        
                                 <p class="mb-4">Or, you can just send an email:
                                     <a href="#">info@charity.org</a>
                                 </p>
+                        
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <input type="text" name="f_name" id="first-name" class="form-control" placeholder="Your Name" required>
                                     </div>
-
+                        
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <input type="text" name="l_name" id="last-name" class="form-control" placeholder="Last Name" required>
                                     </div>
                                 </div>
-
+                        
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Enter Your Email" required>
-
+                        
                                 <textarea name="message" rows="5" class="form-control" id="message" placeholder="What can we help you?"></textarea>
-
-                                <input type="submit" class="form-control" value="Send Message" style="background: #5a6f80;color: white;">
+                        
+                                <input type="submit" class="form-control" value="Send Message" style="background: #5a6f80; color: white;">
                             </form>
                         </div>
+
+                        
+                        <script>
+                            // Check if the message-success div exists and contains text
+                            var successMessage = document.querySelector('.message-success');
+                        
+                            if (successMessage && successMessage.textContent.trim() !== "") {
+                                // Show a popup message
+                                alert(successMessage.textContent.trim());
+                            }
+                        </script>
+                        
+                        
 
                     </div>
                 </div>
@@ -549,7 +582,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 </li>
 
                                 <li class="social-icon-item">
-                                    <a href="https://youtube.com/templatemo" class="social-icon-link bi-youtube"></a>
+                                    <a href="#" class="social-icon-link bi-youtube"></a>
                                 </li>
                             </ul>
                         </div>

@@ -141,6 +141,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 }
 
 /* Container for pagination controls */
+/* General pagination container */
 .pagination {
     display: flex;
     flex-direction: column;
@@ -148,11 +149,21 @@ https://templatemo.com/tm-581-kind-heart-charity
     margin-top: 20px;
 }
 
-/* Center pagination buttons horizontally */
+/* Pagination buttons (First, Previous, Next, Last) */
 .pagination-buttons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to wrap if too many to fit in one line */
+    gap: 10px; /* Adds space between buttons */
     margin-bottom: 10px;
+}
+
+/* Page number links */
+.pagination-numbers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows page numbers to wrap on smaller screens */
+    gap: 5px; /* Adds space between page numbers */
 }
 
 /* Common styles for buttons */
@@ -171,17 +182,9 @@ https://templatemo.com/tm-581-kind-heart-charity
 .pagination-button:hover {
     background-color: #32373d32;
     color:  #32373d;
-
 }
 
 /* Styles for page numbers */
-.pagination-numbers {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;  /* Makes sure page numbers wrap if too many */
-}
-
 .pagination-number {
     display: inline-block;
     padding: 8px 16px;
@@ -210,15 +213,20 @@ https://templatemo.com/tm-581-kind-heart-charity
 
 /* Responsive styles for mobile */
 @media (max-width: 600px) {
-    .pagination-button, .pagination-number {
-        padding: 6px 12px;
-        margin: 3px;
+    .pagination-buttons, .pagination-numbers {
+        flex-wrap: nowrap; /* Prevents wrapping into columns */
+        overflow-x: auto;  /* Allows horizontal scrolling if content overflows */
     }
 
-    .pagination-buttons, .pagination-numbers {
-        flex-direction: column;
+    /* Make sure the buttons remain aligned in one line on small screens */
+    .pagination-button, .pagination-number {
+        flex-shrink: 0; /* Prevent shrinking of buttons */
+        padding: 6px 12px; /* Adjust padding for smaller screens */
+        margin: 3px;
+        font-size: 14px;
     }
 }
+
 
 
 </style>
@@ -272,6 +280,10 @@ https://templatemo.com/tm-581-kind-heart-charity
                 
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn btn" href="">Volunteer</a>
+                        </li>
+
+                        <li class="nav-item ms-3 d-none d-lg-block">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -466,7 +478,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 </li>
 
                                 <li class="social-icon-item">
-                                    <a href="https://youtube.com/templatemo" class="social-icon-link bi-youtube"></a>
+                                    <a href="#" class="social-icon-link bi-youtube"></a>
                                 </li>
                             </ul>
                         </div>

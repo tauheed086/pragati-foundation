@@ -170,6 +170,10 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'contactus' %}">Volunteer</a>
                         </li>
+
+                        <li class="nav-item ms-3 d-none d-lg-block">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">Login</a>
+                        </li>
                     </ul>
                 </div>
                 
@@ -301,71 +305,73 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </div>
                 </div>
             </section> -->
+            {% block content %}
             <section class="section-padding">
                 <div class="col-lg-10 col-12 text-center mx-auto">
                     <h2 class="mb-5">Beneficiaries</h2>
                 </div>
-            {% block content %}
-            <div class="container d-flex justify-content-center">
-                <div class="row" style="width: 100%;">
-                    {% for person in persons %}
-                    <div class="col-12">
-                        <div class="card h-100 shadow-sm">
-                            <div class="row g-0">
-                                <div class="col-md-3">
-                                    <img src="{{ person.photo.url }}" class="img-fluid rounded-start" alt="{{ person.name }}" style="height: 100%; object-fit: cover;">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ person.name }}</h5>
-                                        <table>
-                                            <tr>
-                                                <td><strong>E-mail:</strong> {{ person.email }}</td>
-                                                <td><strong>Phone No.: </strong> {{ person.mask_phone }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Gender:</strong> {{ person.gender }}</td>
-                                                <td><strong>Age:</strong> {{ person.age }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2"><strong>Address: </strong>{{ person.address }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Disability Type: </strong>{{ person.disability_type }}</td>
-                                                <td><strong>Disability Percentage: </strong>{{ person.dis_percentage }}%</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>UDID No.: </strong>{{ person.mask_udid }}</td>
-                                                <td><strong>Aadhaar No.: </strong>{{ person.mask_aadhaar }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Dependent: </strong>{{ person.dependent }}</td>
-                                                <td><strong>Occupation: </strong>{{ person.occupation }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Salary: </strong>{{ person.salary }}</td>
-                                                <td></td>
-                                            </tr>
-                                        </table>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">Registered on {{ person.date_registered|date:"F j, Y" }}</small>
+                <div class="container d-flex justify-content-center">
+                    <div class="row" style="width: 100%;">
+                        {% for person in persons %}
+                        <div class="col-12">
+                            <div class="card h-100 shadow-sm">
+                                <div class="row g-0">
+                                    <div class="col-md-3">
+                                        {% if person.photo %}
+                                            <img src="{{ person.photo.url }}" class="img-fluid rounded-start" alt="{{ person.name }}" style="height: 100%; object-fit: cover;">
+                                        {% else %}
+                                            <img src="{% static 'images/default.png' %}" class="img-fluid rounded-start" alt="{{ person.name }}" style="height: 100%; object-fit: cover;">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ person.name }}</h5>
+                                            <table class="table">
+                                                <tr>
+                                                    <td><strong>E-mail:</strong> {{ person.email }}</td>
+                                                    <td><strong>Phone No.: </strong> {{ person.mask_phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Gender:</strong> {{ person.gender }}</td>
+                                                    <td><strong>Age:</strong> {{ person.age }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><strong>Address: </strong>{{ person.address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Disability Type: </strong>{{ person.disability_type }}</td>
+                                                    <td><strong>Disability Percentage: </strong>{{ person.dis_percentage }}%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>UDID No.: </strong>{{ person.mask_udid }}</td>
+                                                    <td><strong>Aadhaar No.: </strong>{{ person.mask_aadhaar }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Dependent: </strong>{{ person.dependent }}</td>
+                                                    <td><strong>Occupation: </strong>{{ person.occupation }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Salary: </strong>{{ person.salary }}</td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small class="text-muted">Registered on {{ person.date_registered|date:"F j, Y" }}</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endfor %}
-                    <div class="navigation">
-                        <button id="prev" onclick="showPrev()">Previous</button>
-                        <button id="next" onclick="showNext()">Next</button>
+                        {% endfor %}
+                        <div class="navigation">
+                            <button id="prev" onclick="showPrev()">Previous</button>
+                            <button id="next" onclick="showNext()">Next</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-           
-
-{% endblock %}
-</section>
+            </section>
+            {% endblock %}
 
 
 
@@ -703,51 +709,53 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
+                                                <h4 class="carousel-title">Pragati Foundation gave me a prosthetic leg after my accident, allowing me to walk again. Their support restored my independence and dignity. I’m forever grateful!</h4>
 
-                                                <small class="carousel-name"><span class="carousel-name-title">Maria</span>, Boss</small>
+                                                <small class="carousel-name"><span class="carousel-name-title">Chaitali Tandel</small>
                                            </div>
                                         </div>
 
                                         <div class="carousel-item">
                                             <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
+                                                <h4 class="carousel-title">Thanks to Pragati Foundation, I received a wheelchair and started my own small business. They helped me become financially independent, and I now have a steady income!</h4>
 
-                                                <small class="carousel-name"><span class="carousel-name-title">Thomas</span>, Partner</small>
+                                                <small class="carousel-name"><span class="carousel-name-title">
+                                                    Kedar Suryakant Kasbe</small>
                                             </div>
                                         </div>
 
                                         <div class="carousel-item">
                                             <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
+                                                <h4 class="carousel-title">Pragati Foundation provided my child with a walking stick and treated us with great care. Their help has made a huge difference in my daughter’s life. We’re so thankful!</h4>
 
-                                                <small class="carousel-name"><span class="carousel-name-title">Jane</span>, Advisor</small>
+                                                <small class="carousel-name"><span class="carousel-name-title">Danesh Kishor Koli</small>
                                             </div>
                                         </div>
 
                                         <div class="carousel-item">
                                             <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
+                                                <h4 class="carousel-title">With a prosthetic arm from Pragati Foundation, I now have the confidence to work and support my family. They’ve empowered me to live a better life!</h4>
 
-                                                <small class="carousel-name"><span class="carousel-name-title">Bob</span>, Entreprenuer</small>
+                                                <small class="carousel-name"><span class="carousel-name-title">Purviraj Chauhan</small>
                                            </div>
                                         </div>
 
+                                        <br>
                                           <ol class="carousel-indicators">
                                                <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                                    <img src="{% static 'images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
+                                                    <img src="{% static 'images/default.png'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
                                                </li>
 
                                                <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                                    <img src="{% static 'images/avatar/portrait-young-redhead-bearded-male.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
+                                                    <img src="{% static 'images/default.png'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
                                                </li>
 
                                                <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                                    <img src="{% static 'images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
+                                                    <img src="{% static 'images/default.png'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
                                                </li>
 
                                                <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                                    <img src="{% static 'images/avatar/studio-portrait-emotional-happy-funny.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
+                                                    <img src="{% static 'images/default.png'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
                                                </li>
                                           </ol>
 
@@ -917,7 +925,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 </li>
 
                                 <li class="social-icon-item">
-                                    <a href="https://youtube.com/templatemo" class="social-icon-link bi-youtube"></a>
+                                    <a href="#" class="social-icon-link bi-youtube"></a>
                                 </li>
                             </ul>
                         </div>

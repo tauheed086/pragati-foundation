@@ -85,8 +85,6 @@ class work(models.Model):
     name=models.CharField(max_length=30)
     img=models.ImageField()
     detail=models.CharField(max_length=500)
-    raised=models.FloatField()
-    goal=models.FloatField()
 
     def __str__(self):
         return self.name

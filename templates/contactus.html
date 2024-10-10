@@ -124,6 +124,10 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'contactus' %}">Volunteer</a>
                         </li>
+
+                        <li class="nav-item ms-3 d-none d-lg-block">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">Login</a>
+                        </li>
                     </ul>
                 </div>
                 
@@ -307,220 +311,8 @@ https://templatemo.com/tm-581-kind-heart-charity
             
 
 
-            <!-- <section class="about-section section-padding">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-5 col-12">
-                            <img src="{%static 'images/portrait-volunteer-who-organized-donations-charity.jpg'  %}" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-5 col-md-7 col-12">
-                            <div class="custom-text-block">
-                                <h2 class="mb-0">Vikram Chavan</h2>
-
-                                <p class="text-muted mb-lg-4 mb-md-4">FounderD</p>
-
-                                <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-
-                                <p>You are not allowed to redistribute this template ZIP file on any other template collection website. Please contact TemplateMo for more information.</p>
-
-                                <ul class="social-icon mt-4">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-twitter"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-facebook"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-            <!-- <section class="cta-section section-padding section-bg">
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
-
-                        <div class="col-lg-5 col-12 ms-auto">
-                            <h2 class="mb-0">Make an impact. <br> Save lives.</h2>
-                        </div>
-
-                        <div class="col-lg-5 col-12">
-                            <a href="#" class="me-4">Make a donation</a>
-
-                            <a href="#section_4" class="custom-btn btn smoothscroll">Become a volunteer</a>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-
-            <!-- <section class="section-padding" id="">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Our Causes</h2>
-                        </div>
-
-                        {% for cause in causes %}
-                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block-wrap">
-                                <img src="{{cause.img.url}}" class="custom-block-image img-fluid" alt="">
-
-                                <div class="custom-block">
-                                    <div class="custom-block-body">
-                                        <h5 class="mb-3">{{cause.name}}</h5>
-
-                                        <p>{{cause.detail}}</p>
-
-                                        <div class="d-flex align-items-center my-2">
-                                            <p class="mb-0">
-                                                <strong>Raised:</strong>
-                                                ₹ {{cause.raised}}
-                                            </p>
-
-                                            <p class="ms-auto mb-0">
-                                                <strong>Goal:</strong>
-                                                ₹ {{cause.goal}}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <a href="/donate/{{cause.id}}" class="custom-btn btn">Donate now</a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                        
-
-                    </div>
-                </div>
-            </section> -->
-
-            <!-- <section class="volunteer-section section-padding" id="">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12">
-                            <h2 class="text-white mb-4">Volunteer</h2>
-
-                            <form class="custom-form volunteer-form mb-5 mb-lg-0" action="/submit-valunteer" method="post">
-                                {% csrf_token %}
-                                <h3 class="mb-4">Become a volunteer today</h3>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <input type="text" name="name" id="volunteer-name" class="form-control" placeholder="Your Name" required>
-                                    </div>
-
-                                    <div class="col-lg-6 col-12">    
-                                        <input type="email" name="email" id="volunteer-email" class="form-control" placeholder="Enter Your Email" required>
-                                    </div>
-                                    
-                                </div>
-                                <input type="text" name="subject" rows="3" id="volunteer-subject" class="form-control" placeholder="Subject" required>
-
-                                <textarea name="message" rows="3" class="form-control" id="volunteer-message" placeholder="Comment (Optional)"></textarea>
-
-                                <input type="submit" class="form-control" value="Submit" style="background: #5a6f80;color: white;">
-                            </form>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <img src="{% static 'images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg'%}" class="volunteer-image img-fluid" alt="">
-
-                            <div class="custom-block-body text-center">
-                                <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
-
-                                <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-
-            <!-- <section class="testimonial-section section-padding section-bg">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <h2 class="mb-lg-3">Happy Customers</h2>
-                            
-                                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
-
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                           <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Maria</span>, Boss</small>
-                                           </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Thomas</span>, Partner</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Jane</span>, Advisor</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Bob</span>, Entreprenuer</small>
-                                           </div>
-                                        </div>
-
-                                          <ol class="carousel-indicators">
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                                    <img src="{% static 'images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                                    <img src="{% static 'images/avatar/portrait-young-redhead-bearded-male.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                                    <img src="{% static 'images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                                    <img src="{% static 'images/avatar/studio-portrait-emotional-happy-funny.jpg'%}" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-                                          </ol>
-
-                                 </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-
-
+          
+            
             <section class=" section-padding" style="background-color: #5a6f80;">
                 <div class="container justify-content-center">
                     <div class="row">
@@ -579,36 +371,57 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         </a>
                                     </p>
 
-                                    <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+                                    <!-- <a href="#" class="custom-btn btn mt-3">Get Direction</a> -->
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-5 col-12 mx-auto">
+                            <!-- Use Django messages -->
+                            {% if messages %}
+                                <div class="message-success" style="display:none;">
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
                             <form class="custom-form contact-form" action="/contact" method="post" role="form">
                                 {% csrf_token %}
                                 <h2>Contact form</h2>
-
+                        
                                 <p class="mb-4">Or, you can just send an email:
                                     <a href="#">info@charity.org</a>
                                 </p>
+                        
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <input type="text" name="f_name" id="first-name" class="form-control" placeholder="Your Name" required>
                                     </div>
-
+                        
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <input type="text" name="l_name" id="last-name" class="form-control" placeholder="Last Name" required>
                                     </div>
                                 </div>
-
+                        
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Enter Your Email" required>
-
+                        
                                 <textarea name="message" rows="5" class="form-control" id="message" placeholder="What can we help you?"></textarea>
-
-                                <input type="submit" class="form-control" value="Send Message" style="background: #5a6f80;color: white;">
+                        
+                                <input type="submit" class="form-control" value="Send Message" style="background: #5a6f80; color: white;">
                             </form>
                         </div>
+
+                        
+                        <script>
+                            // Check if the message-success div exists and contains text
+                            var successMessage = document.querySelector('.message-success');
+                        
+                            if (successMessage && successMessage.textContent.trim() !== "") {
+                                // Show a popup message
+                                alert(successMessage.textContent.trim());
+                            }
+                        </script>
 
                     </div>
 <br><br>
@@ -683,11 +496,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <div class="col-lg-6 col-14"><br><br><br><br><br>
                             <img src="{% static 'images/volunteer.jpg'%}" class="volunteer-image img-fluid" style="height: 400px; width: 400px;" alt="">
 
-                            <!-- <div class="custom-block-body text-center">
-                                <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
-
-                                <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-                            </div> -->
+                            
                         </div>
 
                     </div>
