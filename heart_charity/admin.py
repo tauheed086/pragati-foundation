@@ -1,13 +1,15 @@
 from django.contrib import admin
-from .models import Person, Volunteer, Contact, Cause, Donate, work, Donations, Event, EventImage
+from .models import Person, Volunteer, Contact, Cause, Donate, work, Event, EventImage
 # Register your models here.
-admin.site.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    list_per_page = 1000  # Set the number of persons per page
+
+admin.site.register(Person, PersonAdmin)  # Register Person with custom admin
 admin.site.register(Volunteer)
 admin.site.register(Contact)
 admin.site.register(Cause)
 admin.site.register(Donate)
 admin.site.register(work)
-admin.site.register(Donations)
 
 
 

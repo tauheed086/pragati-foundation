@@ -90,14 +90,14 @@ class work(models.Model):
         return self.name
     
 
-class Donations(models.Model):
-    name=models.CharField(max_length=30)
-    email=models.EmailField(max_length=30)
-    photo = models.ImageField(upload_to='donors/', null=True, blank=True)
-    amount=models.FloatField()
+# class Donations(models.Model):
+#     name=models.CharField(max_length=30)
+#     email=models.EmailField(max_length=30)
+#     photo = models.ImageField(upload_to='donors/', null=True, blank=True)
+#     amount=models.FloatField()
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
     
 
 class Event(models.Model):
